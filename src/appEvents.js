@@ -3,6 +3,7 @@ class AppEvents {
   onHighlightedTilesChanged = () => { };
   onUpdateWidgetConfig = () => { };
   onWidgetCreated = () => { };
+  onWidgetDelete = () => { };
 }
 
 const appEvents = new AppEvents();
