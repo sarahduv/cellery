@@ -13,16 +13,17 @@ class TileGrid extends React.Component {
 
     appEvents.onHighlightedTilesChanged = this.handleHighlightedTilesChanged;
   }
-
+  // widget will be calling this
   handleHighlightedTilesChanged = (highlightedTiles) => {
     this.setState({ highlightedTiles })
   }
 
   render() {
-    const { width } = this.props;
-    const { tilesPerRow, rows } = this.props;
-    const { widgetConfigs } = this.props;
+    const { width } = this.props; // app
+    const { tilesPerRow, rows } = this.props; // dashboard
+    const { widgetConfigs } = this.props; // app
     const realWidth = width - appCommon.scrollbarWidth;
+    // tile width in px
     const tileWidth = (realWidth / tilesPerRow) - (appCommon.tileMargin * 2);
 
     const tileRows = [];

@@ -9,9 +9,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // if we change the size of the window, the tiles will also change
       height: window.innerHeight,
       width: window.innerWidth,
-      showingPickerFor: null,
+      showingPickerFor: null, // this is the modal
       widgetConfigs: [],
     };
     window.addEventListener('resize', this.handleSizeChange);
@@ -33,8 +34,7 @@ export default class App extends React.Component {
     // Duplicate the object because we don't want to change the original one
     const widgetConfigs = Object.assign({}, this.state.widgetConfigs);
 
-    // This is temporary, we want to replace this with whatever we choose
-    // in a selection menu of which widget we want to add. For now, always clock
+    // This sets the widget of kind and size at location tileId
     widgetConfigs[tileId] = {
       tileId: tileId,
       kind: kind,
@@ -55,6 +55,7 @@ export default class App extends React.Component {
     this.setState({ widgetConfigs });
   }
 
+  // updates the widget config, i.e. the size
   handleWidgetConfig = (widgetConfig) => {
     // Duplicate the object because we don't want to change the original one
     const widgetConfigs = Object.assign({}, this.state.widgetConfigs);

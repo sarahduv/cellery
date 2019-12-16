@@ -26,6 +26,7 @@ class Tile extends React.Component {
   }
 
   render() {
+    // size is from tile grid and widgetConfig is from app
     const { size, widgetConfig } = this.props;
 
     // For every widget we add, we need to add the name => react component 
@@ -45,6 +46,7 @@ class Tile extends React.Component {
       margin: appCommon.tileMargin,
     };
 
+    // this is when we use the grip and drag over other tiles
     if (this.props.isHighlighted) {
       style.backgroundColor = '#212121';
     }
