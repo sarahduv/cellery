@@ -32,6 +32,11 @@ class WidgetPicker extends React.Component {
             <img className="WidgetPickerImage" src="/images/plus.png" />
             <div className="WidgetPickerName">Strongest Magnitude</div>
           </div>
+          <div className="WidgetPickerOption"
+            onClick={() => appEvents.onWidgetCreated(this.props.tile, 'depthCorrelation')}>
+            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <div className="WidgetPickerName">Depth Correlation</div>
+          </div>
         </div>
       </>
     );

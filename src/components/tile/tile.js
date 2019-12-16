@@ -5,6 +5,7 @@ import appCommon from '../../appCommon.js';
 import ClockWidget from '../widgets/clock/clockWidget.js';
 import HourlyEarthqakesWidget from '../widgets/hourlyEarthquakes/hourlyEarthqakesWidget.js';
 import StrongestEarthquakeWidget from '../widgets/strongestEarthquake/strongestEarthquakeWidget.js';
+import DepthCorrelationWidget from '../widgets/depthCorrelation/depthCorrelationWidget.js';
 
 import './tile.scss';
 
@@ -34,6 +35,7 @@ class Tile extends React.Component {
       'clock': () => <ClockWidget config={widgetConfig} tileSize={size} tile={this} />,
       'hourlyEarthquakes': () => <HourlyEarthqakesWidget config={widgetConfig} tileSize={size} tile={this} />,
       'strongestEarthquake': () => <StrongestEarthquakeWidget config={widgetConfig} tileSize={size} tile={this} />,
+      'depthCorrelation': () => <DepthCorrelationWidget config={widgetConfig} tileSize={size} tile={this} />,
 
     }
 
