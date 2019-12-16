@@ -4,7 +4,10 @@ db
 temp 
 data
 .env 
+*.crt
+*.key
 *.env
+package-lock.json
 
 ### Vim ###
 # swap
@@ -93,6 +96,8 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
+aws.yml
+build
 
 # Optional npm cache directory
 .npm

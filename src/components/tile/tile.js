@@ -1,14 +1,14 @@
 import React from 'react';
 import { When } from '../conditionals.js';
 import appEvents from '../../appEvents.js';
-import appConstants from '../../appConstants.js';
-import { SettingsContext } from '../settingsContext.js';
+import appCommon from '../../appCommon.js';
 import ClockWidget from '../widgets/clock/clockWidget.js';
+import HourlyEarthqakesWidget from '../widgets/hourlyEarthquakes/hourlyEarthqakesWidget.js';
+import StrongestEarthquakeWidget from '../widgets/strongestEarthquake/strongestEarthquakeWidget.js';
+
 import './tile.scss';
 
 class Tile extends React.Component {
-  static contextType = SettingsContext;
-
   constructor(props) {
     super(props);
     this.state = {
@@ -31,16 +31,31 @@ class Tile extends React.Component {
     // in this table. The lambdas make sure these are not created until the 
     // function is called.
     const widgetMap = {
-      'clock': () => <ClockWidget config={widgetConfig} tileSize={size} />,
+      'clock': () => <ClockWidget config={widgetConfig} tileSize={size} tile={this} />,
+      'hourlyEarthquakes': () => <HourlyEarthqakesWidget config={widgetConfig} tileSize={size} tile={this} />,
+      'strongestEarthquake': () => <StrongestEarthquakeWidget config={widgetConfig} tileSize={size} tile={this} />,
+
+    }
+
+    const style = {
+      width: size,
+      height: size,
+      margin: appCommon.tileMargin,
+    };
+
+    if (this.props.isHighlighted) {
+      style.backgroundColor = '#212121';
     }
 
     return (
       <>
-        <div onMouseEnter={() => this.setHover(true)}
+        <div
+          id={this.props.id}
+          onMouseEnter={() => this.setHover(true)}
           onMouseLeave={() => this.setHover(false)}
           className="tile"
-          style={{ width: size, height: size, margin: appConstants.tileMargin }}>
-          <When condition={this.isEmpty() && this.state.isHover}>
+          style={style}>
+          <When condition={this.isEmpty() && this.state.isHover && !appCommon.resizeHappening}>
             <div onClick={() => appEvents.onPlusClick(this)} className="plusDiv" />
           </When>
           {widgetConfig ? widgetMap[widgetConfig.kind]() : null}

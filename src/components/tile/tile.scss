@@ -3,6 +3,11 @@
   transition: background-color 0.4s;
   display: inline-block;
   position: relative;
+  overflow: visible;
+}
+
+.resizedTile {
+  background-color: #4d4d4d7c !important;
 }
 
 .tile:hover {

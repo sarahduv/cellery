@@ -1,25 +1,29 @@
 import React from 'react';
-import appConstants from '../../appConstants.js';
-import { SettingsContext } from '../settingsContext.js';
+import appCommon from '../../appCommon.js';
+import appEvents from '../../appEvents.js';
 import Tile from '../tile/tile.js';
 import './tileGrid.scss';
 
 class TileGrid extends React.Component {
-  static contextType = SettingsContext;
-
   constructor(props) {
     super(props);
     this.state = {
-      dummy: [],
+      highlightedTiles: {},
     };
+
+    appEvents.onHighlightedTilesChanged = this.handleHighlightedTilesChanged;
+  }
+
+  handleHighlightedTilesChanged = (highlightedTiles) => {
+    this.setState({ highlightedTiles })
   }
 
   render() {
     const { width } = this.props;
     const { tilesPerRow, rows } = this.props;
     const { widgetConfigs } = this.props;
-    const realWidth = width - appConstants.scrollbarWidth;
-    const tileWidth = (realWidth / tilesPerRow) - (appConstants.tileMargin * 2);
+    const realWidth = width - appCommon.scrollbarWidth;
+    const tileWidth = (realWidth / tilesPerRow) - (appCommon.tileMargin * 2);
 
     const tileRows = [];
     for (let row = 0; row < rows; ++row) {
@@ -31,6 +35,7 @@ class TileGrid extends React.Component {
           key={tileId}
           size={tileWidth}
           widgetConfig={widgetConfigs[tileId]}
+          isHighlighted={tileId in this.state.highlightedTiles}
         />);
       }
       tileRows.push(
