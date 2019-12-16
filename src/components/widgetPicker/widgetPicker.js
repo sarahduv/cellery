@@ -13,24 +13,24 @@ class WidgetPicker extends React.Component {
   render() {
     return (
       <>
-        <div class="WidgetPicker">
-          <div class="WidgetPickerHeader">
+        <div className="WidgetPicker">
+          <div className="WidgetPickerHeader">
             Add Widget
           </div>
-          <div class="WidgetPickerOption"
+          <div className="WidgetPickerOption"
             onClick={() => appEvents.onWidgetCreated(this.props.tile, 'clock')}>
-            <img class="WidgetPickerImage" src="/images/plus.png" />
-            <div class="WidgetPickerName">Clock</div>
+            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <div className="WidgetPickerName">Clock</div>
           </div>
-          <div class="WidgetPickerOption"
+          <div className="WidgetPickerOption"
             onClick={() => appEvents.onWidgetCreated(this.props.tile, 'hourlyEarthquakes')}>
-            <img class="WidgetPickerImage" src="/images/plus.png" />
-            <div class="WidgetPickerName">Hourly Earthquakes</div>
+            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <div className="WidgetPickerName">Hourly Earthquakes</div>
           </div>
-          <div class="WidgetPickerOption"
+          <div className="WidgetPickerOption"
             onClick={() => appEvents.onWidgetCreated(this.props.tile, 'strongestEarthquake')}>
-            <img class="WidgetPickerImage" src="/images/plus.png" />
-            <div class="WidgetPickerName">Strongest Magnitude</div>
+            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <div className="WidgetPickerName">Strongest Magnitude</div>
           </div>
         </div>
       </>

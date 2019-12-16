@@ -24,3 +24,19 @@
   position: fixed;
   z-index:5;
 }
+
+.WidgetDelete {
+  font-size: 20px;
+  height: 20px;
+  width: 20ps;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+  line-height: 1em;
+  transition: color 0.5 ms;
+}
+
+.WidgetDelete:hover {
+  color: rgb(102, 102, 102);
+}

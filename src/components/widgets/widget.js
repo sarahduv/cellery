@@ -155,10 +155,10 @@ class Widget extends React.Component {
             <div
               onMouseDown={this.handleGripStart}
               className="grip">&#9698;</div>
+            <div
+              onMouseDown={() => appEvents.onWidgetDelete(this.props.tile.props.id)}
+              className="WidgetDelete">X</div>
           </When>
-          {/* <When condition={this.state.isResizing}>
-            {resizer}
-          </When> */}
         </div>
       </>
     );

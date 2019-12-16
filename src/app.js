@@ -18,6 +18,7 @@ export default class App extends React.Component {
     appEvents.onPlusClick = this.handleOnPlusClick;
     appEvents.onUpdateWidgetConfig = this.handleWidgetConfig;
     appEvents.onWidgetCreated = this.handleWidgetCreated;
+    appEvents.onWidgetDelete = this.handleWidgetDelete;
   }
 
   handleOnPlusClick = (tile) => {
@@ -42,6 +43,16 @@ export default class App extends React.Component {
     };
 
     this.setState({ widgetConfigs, showingPickerFor: null });
+  }
+
+  handleWidgetDelete = (tileId) => {
+    // Duplicate the object because we don't want to change the original one
+    const widgetConfigs = Object.assign({}, this.state.widgetConfigs);
+
+    // We delete the widget
+    delete widgetConfigs[tileId];
+    // We rerender without the deleted widget
+    this.setState({ widgetConfigs });
   }
 
   handleWidgetConfig = (widgetConfig) => {
